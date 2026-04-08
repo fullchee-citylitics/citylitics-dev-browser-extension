@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub PR Checks Auto Cloud Build",
+  "version": "0.1.1",
+  "description": "Automatically redirects GitHub pull request checks pages with check_run_id to the matching Cloud Build link.",
+  "icons": {
+    "16": "icon.svg",
+    "48": "icon.svg",
+    "128": "icon.svg"
+  },
+  "permissions": [],
+  "host_permissions": [
+    "https://github.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
