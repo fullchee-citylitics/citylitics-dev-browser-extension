@@ -65,10 +65,13 @@
 
   patchHistoryMethod("pushState");
   patchHistoryMethod("replaceState");
+
   window.addEventListener("popstate", () =>
     window.dispatchEvent(new Event("locationchange")),
   );
   window.addEventListener("locationchange", onLocationChange);
+  document.addEventListener("pjax:end", onLocationChange, true);
+  document.addEventListener("pjax:success", onLocationChange, true);
 
   if (!runRedirect()) {
     if (document.readyState === "loading") {
